@@ -1,5 +1,5 @@
 // VOORRAAD ARRAY MET TV'S
-const inventory = [
+/*const inventory = [
   {
     type: '43PUS6504/12',
     name: '4K TV',
@@ -160,60 +160,47 @@ const inventory = [
     originalStock: 10,
     sold: 8,
   },
-];
+];*/
+/*==============================================
+Opdracht 3 - Array methoden en functies
+==============================================*/
 
 /*==============================================
-Opdracht 1a: Gebruik een array-methode om een array te maken met alle tv-type namen.
-Log de uitkomst in de console.
-
+Opdracht 3a: Gebruik een array-methode om alle tv merken (zoals Philips, NIKKEI, etc.)
+in een lijst op de pagina weer te geven. Zorg ervoor dat dit ook zou werken als we
+200 tv's in onze array zouden hebben staan. Dat er dubbele namen in zitten, is niet erg.
 ==============================================*/
-console.log('opdracht 1a');
-const tvTypes = inventory.map((tvType)=>{
-  return (tvType.type);
+
+console.log('opdracht 3a:');
+
+const tvBrands = inventory.map((tvBrand)=>{
+  return (tvBrand.brand);
 });
-console.log(tvTypes);
+//console.log(tvBrands);
+const listBrands = tvBrands.join(', ');
+console.log(listBrands);
 
-/*==============================================
-Opdracht 1b: Gebruik een array-methode om alle tv's te verzamelen (de hele objecten) die
-volledig uitverkocht zijn. Log de uitkomst in de console.
-==============================================*/
-console.log('opdracht 1b');
-const soldOut = inventory.filter((item)=>{
-  return (item.originalStock-item.sold) === 0;
-});
-console.log(soldOut);
+const list = document.getElementById('merken');
+list.textContent = listBrands;
 
-/*==============================================
-Opdracht 1c: Gebruik een array-methode om alle tv's te verzamelen
-(de hele objecten) die over AmbiLight beschikken. Log de uitkomst in de console.
-==============================================*/
-console.log('opdracht 1c');
-const ambilight = inventory.filter((optionAmbilight)=>{
-  return (optionAmbilight.options.ambiLight ===true);
-});
-console.log(ambilight);
 
 
 /*==============================================
-Opdracht 1d: Schrijf een functie die alle tv's van laagste naar hoogste prijs sorteert.
-Log de uitkomst in de console.
-
-// let op dat de rest nog goed gaat
-
+Opdracht 3b: Schrijf de code uit 3a om naar een functie die een array met tv-objecten verwacht.
+Het is handig om onze scripts als functies op te zetten, zodat we ze gemakkelijk kunnen hergebruiken.
+Tip: vergeet deze functie -declaratie niet aan te roepen!
 ==============================================*/
-console.log('opdracht 1d');
-/*
-const lowestToHighest = inventory.sort((a,b)=> a.price-b.price);
-console.log(lowestToHighest);
-*/
 
-/*
+console.log('opdracht3b:');
 
-console.log('opdracht1D:');
-function sortPrice (array){
-  const copyOfArray = array.map((x)=>x);
-  return copyOfArray.sort((a,b)=>a.price-b.price);
+function brandList (array){
+  const list = array.map((x)=>x.brand);
+  const list2 = list.join(', ');
+  return list2;
+  //return copyOfArray.sort((a,b)=>a.price-b.price);
 }
 
-console.log(sortPrice((inventory));
-*/
+console.log(brandList(inventory));
+
+
+

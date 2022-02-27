@@ -1,0 +1,14 @@
+#verkocht{
+    color: greenyellow;
+}
+#ingekocht{
+    color: dodgerblue;
+}
+#voorraad{
+    color: red;
+}
+body{
+    display: flex;
+    flex-direction: column;
+
+}
