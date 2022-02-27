@@ -1,5 +1,5 @@
 // VOORRAAD ARRAY MET TV'S
-const inventory = [
+/*const inventory = [
   {
     type: '43PUS6504/12',
     name: '4K TV',
@@ -160,60 +160,64 @@ const inventory = [
     originalStock: 10,
     sold: 8,
   },
-];
+];*/
 
 /*==============================================
-Opdracht 1a: Gebruik een array-methode om een array te maken met alle tv-type namen.
-Log de uitkomst in de console.
-
+Opdracht 2 - Elementen in de DOM plaatsen
+Tip: wanneer we meerdere waardes uit een array willen terugbrengen tot één getal of één string,
+gebruik je hier gewoon een oude vertrouwde for-loop voor!
 ==============================================*/
-console.log('opdracht 1a');
-const tvTypes = inventory.map((tvType)=>{
-  return (tvType.type);
-});
-console.log(tvTypes);
 
 /*==============================================
-Opdracht 1b: Gebruik een array-methode om alle tv's te verzamelen (de hele objecten) die
-volledig uitverkocht zijn. Log de uitkomst in de console.
+Opdracht 2a: Hoeveel tv's zijn er al verkocht? Schrijf een script dat dit berekent. Log de uitkomst in de console.
 ==============================================*/
-console.log('opdracht 1b');
-const soldOut = inventory.filter((item)=>{
-  return (item.originalStock-item.sold) === 0;
-});
-console.log(soldOut);
+console.log('opdracht 2a');
 
-/*==============================================
-Opdracht 1c: Gebruik een array-methode om alle tv's te verzamelen
-(de hele objecten) die over AmbiLight beschikken. Log de uitkomst in de console.
-==============================================*/
-console.log('opdracht 1c');
-const ambilight = inventory.filter((optionAmbilight)=>{
-  return (optionAmbilight.options.ambiLight ===true);
-});
-console.log(ambilight);
-
-
-/*==============================================
-Opdracht 1d: Schrijf een functie die alle tv's van laagste naar hoogste prijs sorteert.
-Log de uitkomst in de console.
-
-// let op dat de rest nog goed gaat
-
-==============================================*/
-console.log('opdracht 1d');
-/*
-const lowestToHighest = inventory.sort((a,b)=> a.price-b.price);
-console.log(lowestToHighest);
-*/
-
-/*
-
-console.log('opdracht1D:');
-function sortPrice (array){
-  const copyOfArray = array.map((x)=>x);
-  return copyOfArray.sort((a,b)=>a.price-b.price);
+const soldItems = inventory.map((soldItem)=>{
+  return (soldItem.sold);
+    });
+//console.log(soldItems);
+let totalSum = 0;
+for (let i = 0; i < soldItems.length; i++) {
+  totalSum = totalSum + soldItems[i];
 }
+console.log(totalSum);
 
-console.log(sortPrice((inventory));
-*/
+/*==============================================
+Opdracht 2b: Zorg ervoor dat dit aantal in het groen wordt weergegeven op de pagina.
+==============================================*/
+console.log('opdracht 2b')
+const soldTelevisions = document.getElementById('verkocht');
+soldTelevisions.textContent = totalSum;
+
+/*==============================================
+Opdracht 2c: Hoeveel tv's heeft Tech It Easy ingekocht? Schrijf een script dat dit berekent. Log de uitkomst in de console.
+==============================================*/
+console.log('opdracht 2c')
+const stock = inventory.map((stockItem)=>{
+  return (stockItem.originalStock);
+});
+//console.log(stock);
+let totalStock = 0;
+for (let i = 0; i < stock.length; i++) {
+  totalStock = totalStock + stock[i];
+};
+console.log(totalStock);
+/*==============================================
+Opdracht 2d: Zorg ervoor dat dit aantal in het blauw wordt weergegeven op de pagina.
+==============================================*/
+console.log('opdracht 2d');
+const stockTelevisions = document.getElementById('ingekocht');
+stockTelevisions.textContent = totalStock;
+
+
+/*==============================================
+Opdracht 2e: Geef in het rood weer hoeveel tv's er nog verkocht moeten worden.
+==============================================*/
+console.log('opdracht 2e')
+const currentStock = totalStock-totalSum;
+console.log(currentStock);
+//had iets beter moeten nadenken over de naamgeving :(
+const stockTelevisionsToSell = document.getElementById('voorraad');
+stockTelevisionsToSell.textContent = currentStock;
+

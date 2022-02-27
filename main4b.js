@@ -1,5 +1,5 @@
 // VOORRAAD ARRAY MET TV'S
-const inventory = [
+/*const inventory = [
   {
     type: '43PUS6504/12',
     name: '4K TV',
@@ -160,60 +160,80 @@ const inventory = [
     originalStock: 10,
     sold: 8,
   },
-];
+];*/
+/*==============================================
+Opdracht 4 -Functies
+Maak deze gehele opdracht eerst alsof je het voor één tv doet.
+We gaan één tv weergeven in het volgende format:
+
+Philips 43PUS6504/12 - 4K TV
+€379,-
+43 inch (109 cm) | 50 inch (127 cm) | 58 inch (147 cm)
+
+NIKKEI NH3216SMART - HD smart TV
+€159,-
+    32 inch (81 cm)
+==============================================*/
 
 /*==============================================
-Opdracht 1a: Gebruik een array-methode om een array te maken met alle tv-type namen.
-Log de uitkomst in de console.
-
+Opdracht 4d: Zorg ervoor de informatie van één van de tv's
+zoals het voorbeeld wordt weergegeven op de pagina.
+Gebruik hiervoor de functies die je hebt gemaakt in opdracht 5a, 5b en 5c.
 ==============================================*/
-console.log('opdracht 1a');
-const tvTypes = inventory.map((tvType)=>{
-  return (tvType.type);
-});
-console.log(tvTypes);
-
+//zie 4
+const detailsTelevision = document.getElementById('elementList');
+    detailsTelevision.innerHTML =`
+    <span id="naam">${nameTelevision(inventory[0])}</span>
+    <div></div>
+    <span id="prijs">${formatPrice(inventory[0])}</span>
+    <div></div>
+    <span id="scherm">${screenSizes(inventory[0].availableSizes)}</span>
+    <div>======================================================</div>
+    `;
 /*==============================================
-Opdracht 1b: Gebruik een array-methode om alle tv's te verzamelen (de hele objecten) die
-volledig uitverkocht zijn. Log de uitkomst in de console.
+Opdracht 4e: Schrijf een functie die ALLE tv's weergeeft op de pagina zoals in het voorbeeld.
+Dit wil je natuurlijk niet acht keer opnieuw schrijven, want nu zijn het 8 tv's,
+maar in de toekomst misschien wel 200!
+Gebruik in deze functie de voorgaande functies die je hebt geschreven,
+om onderdelen van de data te formatten.
+De overkoepelende "tv-generator-functie" verwacht één parameter
+: de volledige array met tv-objecten. Vergeet 'm niet aan te roepen!
 ==============================================*/
-console.log('opdracht 1b');
-const soldOut = inventory.filter((item)=>{
-  return (item.originalStock-item.sold) === 0;
-});
-console.log(soldOut);
-
-/*==============================================
-Opdracht 1c: Gebruik een array-methode om alle tv's te verzamelen
-(de hele objecten) die over AmbiLight beschikken. Log de uitkomst in de console.
-==============================================*/
-console.log('opdracht 1c');
-const ambilight = inventory.filter((optionAmbilight)=>{
-  return (optionAmbilight.options.ambiLight ===true);
-});
-console.log(ambilight);
 
 
-/*==============================================
-Opdracht 1d: Schrijf een functie die alle tv's van laagste naar hoogste prijs sorteert.
-Log de uitkomst in de console.
+const detailsTelevisionFormat = (currentTelevision)=>{
+    return`
+    <span id="naam">${nameTelevision(currentTelevision)}</span>
+    <div></div>
+    <span id="prijs">${formatPrice(currentTelevision)}</span>
+    <div></div>
+    <span id="scherm">${screenSizes(currentTelevision.availableSizes)}</span>
+    <div>==================================================================================</div>
+    `;
+};
+console.log('opdracht 4e')
+console.log(detailsTelevisionFormat(inventory[0]));
 
-// let op dat de rest nog goed gaat
-
-==============================================*/
-console.log('opdracht 1d');
-/*
-const lowestToHighest = inventory.sort((a,b)=> a.price-b.price);
-console.log(lowestToHighest);
-*/
-
-/*
-
-console.log('opdracht1D:');
-function sortPrice (array){
-  const copyOfArray = array.map((x)=>x);
-  return copyOfArray.sort((a,b)=>a.price-b.price);
+const listAll = document.getElementById('List');
+for (let i = 0; i < inventory.length; i++) {
+    listAll.innerHTML += `${detailsTelevisionFormat(inventory[i])}`
 }
 
-console.log(sortPrice((inventory));
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
